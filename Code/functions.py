@@ -153,12 +153,13 @@ def onClosing(window):
     while parent:
         parent.destroy()
         parent = parent.master
+    exit(1)
 
 def windowDesign(window):
     #Get the updated geometry of the window
     window.update_idletasks()
     #Add title to the program
-    window.title("PasswordManager - By Peri Amiga")
+    window.title("Password Manager - By Peri Amiga")
     #Add icon to the program
     window.iconbitmap("")
     img = PhotoImage(file='../Images/icon.png')
@@ -171,16 +172,16 @@ def windowDesign(window):
     window.protocol("WM_DELETE_WINDOW", lambda: onClosing(window))
 
     #Get screen dimension and find the center point to set the position of the windows
-    screen_width = window.winfo_screenwidth()
-    screen_height = window.winfo_screenheight()
+    screenWidth = window.winfo_screenwidth()
+    screenHeight = window.winfo_screenheight()
 
-    window_width = window.winfo_width()
-    window_height = window.winfo_height()
+    windowWidth = window.winfo_width()
+    windowHeight = window.winfo_height()
 
-    center_x = int(screen_width/2 - window_width / 2)
-    center_y = int(screen_height/2 - window_height / 2)
+    centerX = int(screenWidth/2 - windowWidth / 2)
+    centerY = int(screenHeight/2 - windowHeight / 2)
 
-    window.geometry(f'+{center_x}+{center_y}')
+    window.geometry(f'+{centerX}+{centerY}')
 
 #Simulate a button click when the Enter key is pressed
 def onEnterKey(event, button):
@@ -416,9 +417,13 @@ def importDataFunc(managerRoot, clientUsername, passwordsData):
             #Check if the data is already exists in the database before adding it
             queryCheck = "SELECT * FROM passwords WHERE user = %s and name = %s and url = %s and username = %s"
             cursor.execute(queryCheck, (clientUsername, name, url, username))
-            result = cursor.fetchone()
+            result = cursor.fetchall()
+            flag = False
             if (result):
-                if (decryptPassword(result[5]) == decryptedPassword):
+                for res in result:
+                    if (decryptPassword(res[5]) == decryptedPassword):
+                        flag = True
+                if (flag):
                     continue
 
             #Query to add the new data to the table passwords

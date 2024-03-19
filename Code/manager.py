@@ -23,14 +23,14 @@ def openManagerPage(managerRoot, username, passwordsData):
 
 
     def dataSearch(event):
-            search_text = searchInput.get().lower()
-            for row in dataRows:
-                if search_text in row[0].cget("text").lower() or search_text in row[1].cget("text").lower():
-                    for item in row:
-                        item.grid()
-                else:
-                    for item in row:
-                        item.grid_remove()
+        search_text = searchInput.get().lower()
+        for row in dataRows:
+            if search_text in row[0].cget("text").lower() or search_text in row[1].cget("text").lower():
+                for item in row:
+                    item.grid()
+            else:
+                for item in row:
+                    item.grid_remove()
 
 
     def clearSearch(event):
@@ -91,6 +91,11 @@ def openManagerPage(managerRoot, username, passwordsData):
         messagebox.showinfo(title="CSV File", message="The data has been successfully extracted. You can find it on your desktop")
 
 
+    #Update the scrollbar when the canvas's size changes
+    def updateScrollRegion(event):
+        canvas.configure(scrollregion=canvas.bbox("all"))
+
+
     #Sorting the data
     sortedPasswordsData = sorted(passwordsData, key=lambda x: x[2])
     #Creating an array with decrypted passwords
@@ -105,7 +110,7 @@ def openManagerPage(managerRoot, username, passwordsData):
     headlineFont, labelsFont, buttonsFont, resetPasswordFont = font.configureFonts()
     dataFont = tk.font.Font(family="Helvetica", size=10)
     urlFont = tk.font.Font(family="Helvetica", size=10, underline=1)
-    labelsFont.config(underline=1)
+
 
     #Objects
     PasswordManagerManager = Label(managerRoot, text = "Password Manager - Manager", font = headlineFont)
@@ -116,25 +121,35 @@ def openManagerPage(managerRoot, username, passwordsData):
     clearButton = Button(managerRoot, text = "Clear", font = buttonsFont, cursor = "hand2")
 
     appnameLabel = Label(managerRoot, text = "App Name", font = labelsFont)
-    urlLabel = Label(managerRoot, text = "URL", font = labelsFont)
-    usernameLabel = Label(managerRoot, text = "Username", font = labelsFont)
-    passwordLabel = Label(managerRoot, text = "Password", font = labelsFont)
+    urlLabel = Label(managerRoot, text = "              URL", font = labelsFont)
+    usernameLabel = Label(managerRoot, text = "              Username", font = labelsFont)
+    passwordLabel = Label(managerRoot, text = "    Password", font = labelsFont)
+
+    canvas = Canvas(managerRoot) #Create a Canvas widget that will display all the data within it
+    scrollbar = Scrollbar(managerRoot, orient="vertical", command=canvas.yview) #Create a scrollbar widget
+    canvas.configure(yscrollcommand=scrollbar.set) #Configure the Canvas to scroll with the scrollbar
+    frame = Frame(canvas) #Create a frame to contain the data inside the Canvas
+    canvas.create_window((0, 0), window=frame, anchor="nw")
 
     importData = Button(managerRoot, text = "Import Data", font = buttonsFont, cursor = "hand2", command = lambda mr=managerRoot, pd=passwordsData, un=username: functions.importDataFunc(mr, un, pd))
     extractData = Button(managerRoot, text = "Extract Data", font = buttonsFont, cursor = "hand2", command = lambda pd=passwordsData, sdp=sortedDecryptedPasswordsData: extractDataFunc(pd, sdp))
     addNewData = Button(managerRoot, text = "Add New Data", font = buttonsFont, cursor = "hand2", command = addNewDataFunc)
 
+
     #Packing to root
-    PasswordManagerManager.grid(row=0, column=0, columnspan=7, pady=20)
+    PasswordManagerManager.grid(row=0, column=0, columnspan=8, pady=20)
     helloLabel.grid(row=1, column=0, padx=10)
     changePasswordButton.grid(row=1, column=6, padx=10, pady=10)
-    searchLabel.grid(row=2, column=2, padx=0)
-    searchInput.grid(row=2, column=3, padx=0)
+    searchLabel.grid(row=2, column=2, padx=5)
+    searchInput.grid(row=2, column=3, padx=5)
     clearButton.grid(row=2, column=4, pady=20)
     appnameLabel.grid(row=3, column=0, padx=10)
     urlLabel.grid(row=3, column=1, padx=10)
     usernameLabel.grid(row=3, column=2, padx=10)
     passwordLabel.grid(row=3, column=3, padx=10)
+    canvas.grid(row=4, column=0, columnspan=7, sticky="nsew")
+    scrollbar.grid(row=4, column=7, sticky="ns")
+
 
     #adding all the data to the window
     rowNum = 4
@@ -143,15 +158,15 @@ def openManagerPage(managerRoot, username, passwordsData):
     index = 0
     for data, decryptedData in zip(sortedPasswordsData, sortedDecryptedPasswordsData):
         #Objects
-        appnameLabel = Label(managerRoot, text = data[2], font = dataFont)
-        url = Label(managerRoot, text = data[3], font = urlFont, fg = "blue")
-        usernameInput = Entry(managerRoot, width = 20, font = dataFont)
-        passwordInput = Entry(managerRoot, width = 20, font = dataFont, show = '*')
-        showPasswordButton = Button(managerRoot, text = "Show", font = buttonsFont, cursor = "hand2")
+        appnameLabel = Label(frame, text = data[2], font = dataFont)
+        url = Label(frame, text = data[3], font = urlFont, fg = "blue")
+        usernameInput = Entry(frame, width = 20, font = dataFont)
+        passwordInput = Entry(frame, width = 20, font = dataFont, show = '*')
+        showPasswordButton = Button(frame, text = "Show", font = buttonsFont, cursor = "hand2")
         showPasswordButton.config(command=lambda pi=passwordInput, spb=showPasswordButton, ep=data[5], dp=decryptedData: functions.toggleDecryptedPasswordVisibility(pi, spb, ep, dp))
-        editButton = Button(managerRoot, text = "Edit", font = buttonsFont, cursor = "hand2")
+        editButton = Button(frame, text = "Edit", font = buttonsFont, cursor = "hand2")
         editButton.config(command=lambda ui=usernameInput, pi=passwordInput, eb=editButton, spb=showPasswordButton, url=url, spd=sortedPasswordsData, sdp=sortedDecryptedPasswordsData, i=index: functions.editData(username, editButtons, ui, pi, eb, spb, url, spd, sdp, i))
-        deleteButton = Button(managerRoot, text = "Delete", font = buttonsFont, cursor = "hand2")
+        deleteButton = Button(frame, text = "Delete", font = buttonsFont, cursor = "hand2")
         editButtons.append(editButton)
         dataRows.append([appnameLabel, url, usernameInput, passwordInput, showPasswordButton, editButton, deleteButton])
         deleteButton.config(command = lambda an=appnameLabel, u=url, ui=usernameInput, pi=passwordInput, spb=showPasswordButton, eb=editButton, db=deleteButton, dr=dataRows, ebs=editButtons, spd=sortedPasswordsData, sdp=sortedDecryptedPasswordsData, i=index: deleteData(an, u, ui, pi, spb, eb, db, dr, ebs, spd, sdp, i))
@@ -180,11 +195,13 @@ def openManagerPage(managerRoot, username, passwordsData):
 
         rowNum = rowNum + 1
         index = index + 1
-    addNewData.grid(row=rowNum, columnspan=7, pady=10)
+    addNewData.grid(row=rowNum, columnspan=8, pady=10)
     importData.grid(row=rowNum, column=5, padx=10)
     extractData.grid(row=rowNum, column=6, padx=10)
     searchInput.bind("<KeyRelease>", dataSearch) #Apply Search
     clearButton.bind("<Button-1>", clearSearch) #Clear Search Input
+    canvas.bind_all("<MouseWheel>", lambda event: canvas.yview_scroll(-1 * int(event.delta/120), "units"))
+    frame.bind("<Configure>", updateScrollRegion)
     managerRoot.update_idletasks() #Update the geometry of the window
     functions.windowDesign(managerRoot)
 
