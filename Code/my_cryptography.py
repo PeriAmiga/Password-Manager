@@ -22,6 +22,7 @@ if not os.path.exists('salt.txt'):
     #Write the salt value to a file
     with open('salt.txt', 'wb') as file:
         file.write(salt)
+        print("The salt created successfully!")
 
 
 #Create a symmetric key for encrypting passwords
@@ -35,3 +36,4 @@ if not os.path.exists('symmetric.txt'):
     #Write the key value to a file
     with open('symmetric.txt', 'wb') as file:
         file.write(generateSymmetricKey())
+        print("The symmetric key created successfully!")

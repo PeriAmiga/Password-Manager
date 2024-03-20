@@ -121,9 +121,9 @@ def openManagerPage(managerRoot, username, passwordsData):
     clearButton = Button(managerRoot, text = "Clear", font = buttonsFont, cursor = "hand2")
 
     appnameLabel = Label(managerRoot, text = "App Name", font = labelsFont)
-    urlLabel = Label(managerRoot, text = "              URL", font = labelsFont)
-    usernameLabel = Label(managerRoot, text = "              Username", font = labelsFont)
-    passwordLabel = Label(managerRoot, text = "    Password", font = labelsFont)
+    urlLabel = Label(managerRoot, text = "URL", font = labelsFont)
+    usernameLabel = Label(managerRoot, text = "Username", font = labelsFont)
+    passwordLabel = Label(managerRoot, text = "Password", font = labelsFont)
 
     canvas = Canvas(managerRoot) #Create a Canvas widget that will display all the data within it
     scrollbar = Scrollbar(managerRoot, orient="vertical", command=canvas.yview) #Create a scrollbar widget

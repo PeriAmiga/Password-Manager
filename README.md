@@ -1,2 +1,75 @@
-# Password Manager
- Manage all your passwords in one place
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Manager Application</title>
+</head>
+<body>
+
+  <h1>Password Manager Application</h1>
+
+  <p>This is a password manager application developed in Python. It allows users to securely store, manage, and organize their passwords.</p>
+
+  <h2>Instructions</h2>
+
+  <h3>Initial Setup</h3>
+
+  <ol>
+    <li><strong>Update Configuration:</strong> In the first run, you need to update the data in the <code>configuration.py</code> file according to your database configuration.</li>
+    <li><strong>Database Setup:</strong> Run the <code>dbCodeCreation.py</code> file to initialize the required database tables and configurations.</li>
+    <li><strong>Cryptography Setup:</strong> Run the <code>my_cryptography.py</code> file to set up encryption and decryption functionalities.</li>
+  </ol>
+
+  <h3>Running the Application</h3>
+
+  <p>After completing the initial setup steps:</p>
+
+  <ol>
+    <li>Run the <code>main.py</code> file to start the password manager application.</li>
+  </ol>
+
+  <h2>Features</h2>
+
+  <ul>
+    <li>Securely store, manage, and organize passwords.</li>
+    <li>Import passwords from CSV files, including CSV files exported from Google Password Manager.</li>
+    <li>Export passwords to CSV files compatible with Google Password Manager.</li>
+    <li>Generate random passwords.</li>
+    <li>Reset password via email.</li>
+    <li>Change password for added security.</li>
+    <li>Secure login and registration functionality.</li>
+    <li>Search passwords by application name or URL.</li>
+  </ul>
+
+  <h2>Dependencies</h2>
+
+  <ul>
+    <li>Python 3.x</li>
+    <li>MySQL database</li>
+  </ul>
+
+  <h2>Usage</h2>
+
+  <ol>
+    <li>Clone the repository:</li>
+  </ol>
+
+  <pre><code>git clone https://github.com/your_username/password-manager.git</code></pre>
+
+  <ol start="2">
+    <li>Navigate to the project directory:</li>
+  </ol>
+
+  <pre><code>cd password-manager</code></pre>
+
+  <ol start="3">
+    <li>Follow the initial setup instructions mentioned above.</li>
+    <li>Run the application:</li>
+  </ol>
+
+  <pre><code>python main.py</code></pre>
+
+
+</body>
+</html>

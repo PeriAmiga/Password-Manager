@@ -159,7 +159,7 @@ def windowDesign(window):
     #Get the updated geometry of the window
     window.update_idletasks()
     #Add title to the program
-    window.title("Password Manager - By Peri Amiga")
+    window.title("Password Manager")
     #Add icon to the program
     window.iconbitmap("")
     img = PhotoImage(file='../Images/icon.png')
