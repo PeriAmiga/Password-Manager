@@ -13,3 +13,8 @@ smtpPort = 587  #Port for TLS
 ##Email username and password
 systemEmail = 'computersec03@gmail.com'
 systemEmailPassword = 'idupllofpzchuseu'
+
+
+#Create a salt to hash users' passwords
+#My Key
+key = "PasswordManager"

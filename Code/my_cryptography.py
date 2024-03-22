@@ -3,16 +3,14 @@ import hashlib
 import pbkdf2
 from cryptography.fernet import Fernet
 import base64
+from db import configuration
 
-#Create a salt to hash users' passwords
-#My Key
-key = "Peri'sPasswordManager"
 
 # Generate 60 random bytes
 random_bytes = os.urandom(60)
 
 #Combine the fixed string and random bytes
-combined_value = key.encode('utf-8') + random_bytes
+combined_value = configuration.key.encode('utf-8') + random_bytes
 
 #Compute the SHA-256 hash of the combined value
 salt = hashlib.sha256(combined_value).hexdigest().encode('ascii')
