@@ -48,6 +48,19 @@
     <li>MySQL database</li>
   </ul>
 
+  <h2>Technologies and Libraries Used</h2>
+
+  <ul>
+    <li><strong>Python:</strong> Used as the primary programming language for development.</li>
+    <li><strong>Tkinter:</strong> Used for building the graphical user interface (GUI).</li>
+    <li><strong>Pandas:</strong> Used for data manipulation and CSV file handling.</li>
+    <li><strong>MySQL Connector:</strong> Used to connect and interact with the MySQL database.</li>
+    <li><strong>SMTPLib:</strong> Used for sending emails for password reset functionality.</li>
+    <li><strong>Hashlib:</strong> Used for hashing passwords.</li>
+    <li><strong>PBKDF2:</strong> Used for key derivation.</li>
+    <li><strong>Cryptography:</strong> Used for symmetric encryption and decryption.</li>
+  </ul>
+
   <h2>Usage</h2>
 
   <ol>
