@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd32ecd6-c8a6-4dcd-b193-28906f7bfb56" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Password-Manager.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gitignore.io" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/db/configuration.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/db/configuration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/my_cryptography.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/my_cryptography.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +49,7 @@
       <workItem from="1711069332697" duration="279000" />
       <workItem from="1711069860277" duration="7000" />
       <workItem from="1711242278392" duration="1321000" />
+      <workItem from="1711280118230" duration="1353000" />
     </task>
     <servers />
   </component>

@@ -10,6 +10,8 @@
 
   <p>This is a password manager application developed in Python. It allows users to securely store, manage, and organize their passwords.</p>
 
+  <img src="Password-Manager - Manager.png" alt="Password Manager Screenshot" style="display:block; margin:auto; max-width:100%;">
+
   <h2>Instructions</h2>
 
   <h3>Initial Setup</h3>

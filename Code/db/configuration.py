@@ -1,7 +1,7 @@
 #Global variables for MySQL DB
-dbHost = 'localhost'
-dbUser = 'root'
-dbPassword = '123456'
+dbHost = ''
+dbUser = ''
+dbPassword = ''
 
 
 #Global variables for Email
@@ -11,10 +11,9 @@ smtpPort = 587  #Port for TLS
 
 
 ##Email username and password
-systemEmail = 'computersec03@gmail.com'
-systemEmailPassword = 'idupllofpzchuseu'
+systemEmail = ''
+systemEmailPassword = ''
 
 
-#Create a salt to hash users' passwords
-#My Key
-key = "PasswordManager"
+#Key for the salt
+key = ""

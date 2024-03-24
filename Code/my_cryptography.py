@@ -5,8 +5,8 @@ from cryptography.fernet import Fernet
 import base64
 from db import configuration
 
-
-# Generate 60 random bytes
+#Create a salt to hash users' passwords
+#Generate 60 random bytes
 random_bytes = os.urandom(60)
 
 #Combine the fixed string and random bytes
