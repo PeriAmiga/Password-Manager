@@ -67,7 +67,7 @@
     <li>Clone the repository:</li>
   </ol>
 
-  <pre><code>git clone https://github.com/your_username/password-manager.git</code></pre>
+  <pre><code>git clone https://github.com/PeriAmiga/password-manager.git</code></pre>
 
   <ol start="2">
     <li>Navigate to the project directory:</li>
